@@ -25,18 +25,19 @@
               </nav>
 
                   <?php 
-                  //var_dump($data1);
+                  if(sizeof($data1)){
                   foreach($data1 as $data){
                   $question = $data['row1']['question'] ;
                   $answer = $data['row1']['answer'];
                   //var_dump($question);
                   //var_dump($answer);
                   $len2 = count($answer);                                   
-                  $tagNames=explode("-|::|-", $question[0]['tag_names']);
-                  $tagIDs=explode("-|::|-", $question[0]['tag_ids']); 
+                  
                 
 
-                  foreach($question as $val){ ?>
+                  foreach($question as $val){ 
+                    $tagNames=explode("-|::|-", $val['tag_names']);
+                  $tagIDs=explode("-|::|-", $val['tag_ids']); ?>
 
 
                       <div class="panel panel-default col-md-7">
@@ -55,9 +56,12 @@
                         <div class="row">
                                 
                           <ul class="list-inline">
-                            Tags:
-                            <?php foreach($tagNames as $tag){ ?>
-                              <li style="background:#8DC26F;"><?php echo $tag; ?></li>
+                           
+                            <?php $i=0; foreach($tagNames as $tag){
+                              $tagId = $tagIDs[$i];
+                              $i++;
+                             ?> 
+                              <li><a href="<?php echo base_url().'index.php/Answerme/tagInfo/'.$tagId;?>"><?php echo $tag; ?></a></li>
                             <?php } ?>
                           </ul>
                        <h4> <a href=<?php echo "http://www.answerme.com/index.php/question/answer/",$val['question_id']; ?> >Answer</a><h4>    
@@ -95,7 +99,10 @@
                       </div> 
                     <?php } ?>   
                     </div>
-                  <?php }   }?>
+                  <?php }   }}
+
+                  else {?> <center><h3>No results found<h3></center>
+                  <?php }?>
 
  <?php include('footer.php'); ?>
 

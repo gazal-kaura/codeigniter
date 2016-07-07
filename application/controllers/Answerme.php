@@ -228,6 +228,7 @@ public function register()
 		          //var_dump($qid[$ques['question_id']]);
 		        }
 		      } 
+		     
    			}
     arsort($qid);
     $qid=array_keys($qid);
