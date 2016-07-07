@@ -164,15 +164,11 @@ class User_model extends CI_Model
         return $query->result();
     }
 
-    function insertPic($data)
-    {
-         $user_id=$data['user_id'];
-         $file_name=$data['profile_pic'];
-         $this->db->set('profile_pic','$file_name',FALSE);
+    function editUser($data,$user_id)
+    {        
             $this->db->where('user_id',$user_id);
-            return $this->db->update('users');
-
-
+            return $this->db->update('users',$data);
+         
     }
     function getQues($user_id)
     {

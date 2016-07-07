@@ -33,10 +33,7 @@
                   $answer = $row1['allinfo']['answer'];                  
                   $len2 = count($row1['allinfo']['answer']);
                   $a = array();
-                  //unable to get this value                   
-                   
-                  //var_dump($row1);
-                  //$len2 is for answers do have a look!                
+                       
                   for($i = 0;$i<$len2;$i++){
                       array_push($a,$row1['allinfo']['answer'][$i]['question_id']);                                            
                   }

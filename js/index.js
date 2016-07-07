@@ -187,6 +187,7 @@ $("#searchSubmit").click(function(){
 });
 
 
+
 function bindAutoSuggst(){
       $( "#searchbar" ).autocomplete({
       source: "http://www.answerme.com/index.php/Answerme/autoSuggestor",

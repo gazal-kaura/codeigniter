@@ -184,11 +184,12 @@ public function register()
          $upload_data=$this->upload->data();
          $user_id = $this->session->userdata['sessiondata']['user_id'];
          $file_name=$upload_data['file_name'];
-         $data = array(
-         		'user_id'	   => $user_id,
+
+         $data = array(         		
 			    'profile_pic'  => $file_name		    
 				);
-		$this->User_model->insertPic($data);
+         //var_dump($user_id); return;
+		$this->User_model->editUser($data,$user_id);
 
 		redirect('Answerme/profile');
 

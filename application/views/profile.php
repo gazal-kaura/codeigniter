@@ -36,9 +36,12 @@
             <div class="panel-body">
               <div class="row">
                 <div class="col-md-3 col-lg-3 " align="center" class="img-circle img-responsive"> <img src=" <?php echo base_url('uploads/'.$row1[0]->profile_pic.''); ?> " height=150 width=150>
-                   <label class="btn btn-default btn-file pull-right">
-                                <span class="glyphicon glyphicon-upload"></span> Edit Image <input type="file" style="display: none;">
-                          </label>
+                   <?php $attributes = array("id" => "changePicForm");
+                echo form_open_multipart("Answerme/changePic", $attributes);?><label class="btn btn-default btn-file pull-right">
+                              <span class="glyphicon glyphicon-upload"></span> Edit Image <input name="userfile" id="profilePicFile" type="file" style="display: none;" required/><span id="imagePath"></span>
+                                </label>
+                                <input type="submit" class="btn btn-success pull-right" id="profilePicSubmit"  value="Submit">
+                          </form>
                   
                  </div>
                
