@@ -24,7 +24,15 @@ time, mark, audio, video {
   vertical-align: baseline;
   list-style: none;
 }
-
+#block {
+    display: block;
+                                      height: 1px;
+                                      border: 0;
+                                      border-top: 7px solid #FFF;
+                                      margin-top: 5px;;
+                                      width:100%;
+                                      padding: 0; 
+}
 
 header[role=banner] {
   position: relative;
@@ -241,7 +249,7 @@ body{
 
 
 .container {
-  height: 44px;
+  height: 60px;
   left: 30%;
   margin: -22px 0 0 -141px;
   position: absolute;
@@ -249,9 +257,11 @@ body{
   color:#808080;
 }
 
-.ul xyz{
+ul.xyz li a{
 
-  text-decoration-style: dotted;
+      border-bottom: 1px dotted #000;
+       color: #333;
+    text-decoration: none;
 }
 
 input[type="search"]::-webkit-search-cancel-button,
@@ -266,4 +276,9 @@ margin:0px;
 float:left;
 
 
+}
+
+
+button.customAlign{
+  float:right;
 }

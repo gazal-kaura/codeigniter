@@ -5,16 +5,15 @@ class ForgotPassword extends CI_Controller {
 
 	public function __construct(){
 		parent::__construct();
+		$this->load->helper(array('form','url'));
+		$this->load->database();
 		$this->load->model('User_model');
-		$this->load->model('Quesans_model');
+		$this->load->library('session');
+		$this->load->library('form_validation');
 	}	
-
-	//forgot password page
 	public function index(){
 		$this->load->view('forgotpassword');
 	} 
-
-	//verify if email id exists
 	public function checkEmail(){
 		$forgotPasswordEmail = $this->input->post("forgotPasswordEmail");
 		if($this->User_model->validateEmail($forgotPasswordEmail)){
@@ -23,9 +22,7 @@ class ForgotPassword extends CI_Controller {
 		else {
 				echo "false";
 		}
-	} 
-
-	//send mail for new password 
+	}  
 	public function sendMail() {
 
         $forgotPasswordEmail = $this->input->post('forgotPasswordEmail');
@@ -51,7 +48,7 @@ class ForgotPassword extends CI_Controller {
           echo "false";
       }
 
-      //see if user has permission to change the password
+
       public function changePassword($user_id,$password){		
 		if($this->User_model->hasChangePasswordAccess($user_id,$password)){
 			$data = array('user_id'=>$user_id);
@@ -61,8 +58,6 @@ class ForgotPassword extends CI_Controller {
 				echo "Permission Denied";
 		}
 	  }  
-
-	  //set new password of user
 	  public function setPassword(){
 	  	$userIdChangePassword = $this->input->post('userIdChangePassword');	
 	  	$newPassword = $this->input->post('newPassword');	

@@ -19,7 +19,7 @@
     <div class="login-page">
   <div class="form">
     <?php $attributes = array("id" => "forgotPasswordForm");
-                echo form_open_multipart("Answerme/login", $attributes);?>
+                echo form_open_multipart("Users/login", $attributes);?>
       <input type="text" name="forgotPasswordEmail" id="forgotPasswordEmail" placeholder="username"/>
       <div class="alert alert-danger" role="alert" id="forgotPasswordError" hidden="true"></div>
       <button type="submit" id="forgotPasswordSubmit" >Send mail</button>      

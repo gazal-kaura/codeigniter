@@ -3,15 +3,9 @@
   <head>
     <meta charset="UTF-8">
     <title>Change Password Form</title>
-    
-    
-    
-    
-        <link rel="stylesheet" href="<?php echo base_url(); ?>css/style.css">
 
-    
-    
-    
+        <link rel="stylesheet" href="<?php echo base_url(); ?>css/style.css">
+ 
   </head>
 
   <body>

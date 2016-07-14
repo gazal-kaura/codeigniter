@@ -56,7 +56,7 @@
                               $tagId = $tagIDs[$i];
                               $i++;
                              ?>
-                              <li><a href="<?php echo base_url().'index.php/Answerme/tagInfo/'.$tagId;?>">
+                              <li><a href="<?php echo base_url().'index.php/Tags/tagInfo/'.$tagId;?>">
                     
                               <?php echo $tag ?></li>
                             <?php } ?>
@@ -112,7 +112,7 @@
       </div>
     </div>               
   </div>
-</div>
+
 
 <?php
   $this->load->view('footer.php');

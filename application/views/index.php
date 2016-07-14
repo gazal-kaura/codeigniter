@@ -4,14 +4,7 @@
     <meta charset="UTF-8">
     <title>Login Form</title>
     
-    
-    
-    
-        <link rel="stylesheet" href="<?php echo base_url(); ?>css/style.css">
-
-    
-    
-    
+        <link rel="stylesheet" href="<?php echo base_url(); ?>css/style.css">   
   </head>
 
   <body>
@@ -24,8 +17,9 @@
       <input type="text" name="email" id="email" placeholder="username" required/>
       <input type="password" name="pwd" id="pwd" placeholder="password" required/>
       <div class="alert alert-danger" role="alert" id="error" hidden="true"></div>
-      <button type="submit" id="loginSubmit">login</button>
-      <p class="message">Not registered? <a href="http://www.answerme.com/index.php/answerme/signup">Create an account</a></p>
+      <button type="submit" class="btn btn-success customAlign" id="loginSubmit">login</button>
+      <!--button type="button" class="btn btn-success customAlign" id="loginSubmit">Login</button-->
+      <p class="message">Not registered? <a href="http://www.answerme.com/index.php/users/signup">Create an account</a></p>
       
        <p class="message"><a href="http://www.answerme.com/index.php/ForgotPassword">Forgot password? </a></p>
     </form>

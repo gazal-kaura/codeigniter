@@ -1,52 +1,30 @@
-<!DOCTYPE html>
-<html >
-  <head>
-    <meta charset="UTF-8">
-    <title>postAnswer</title>              
-        <!--link rel="stylesheet" href="css/style.css"-->
-        <link rel="stylesheet" href="<?php echo base_url(); ?>css/style.css">
-        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-      
-    
-  </head>
-
-  <body>
-      <?php include('template.php'); ?>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="http://www.answerme.com/index.php/answerme/homepage">Home</a></li>
-                        <li><a href="http://www.answerme.com/index.php/answerme/showAllTags">Tags</a></li>
-                        <li><a href="http://www.answerme.com/index.php/answerme/profile">MyProfile</a></li>
-                        <li><a href="http://www.answerme.com/index.php/question">Post a Question!</a></li>
-                        <li><a href="http://www.answerme.com/index.php/answerme/contact">Contact</a></li>
-                        <li><a href="http://www.answerme.com/index.php/answerme/logout">Logout</a></li>
-                    </ul>
-                </div>
-
-            </div>
-    
-  </div>
-</nav>  
-
-    <div class="postQuestion-page">
+  <div class="answerQuestion-page">
   <div class="form">
     <?php $attributes = array("id" => "answerForm");
                 echo form_open_multipart("question/postA", $attributes);?>
-      <img src="<?php echo base_url(); ?>/images/images.jpg" class="img"> 
+       <div class="panel panel-default col-md-12" style="margin-top:5%;">
+          <div class="panel-body">
+             <div class="row"><h4><?php echo $question_description[0]->question_description ;?><center>
+             </h4>
+                  <div class="media">
+                    <div class="media-left media-top">
+                      <strong><img src=" <?php echo base_url('uploads/'.$question_description[0]->profile_pic.''); ?> " height=30 width=30></strong>
+                    </div>
+                    <div class="media-body">
+                    posted by <?php echo $question_description[0]->name; ?> at: <?php  echo $question_description[0]->posted_at;?>
+                    </div>
+                  </div>
+            </div>
+          </div>
+        </div>      
       <input type="hidden" name="question_id" value="<?php echo $question_id; ?>">        
-      <textarea rows="4" cols="31" resize="none" name="answer" id="answer" placeholder="answer" required ></textarea>
+      <textarea rows="8" cols="170" resize="none" name="answer" id="answer" placeholder="Please type your answer here" required ></textarea>
       <div class="alert alert-danger" role="alert" id="errorA" hidden="true"></div>
-      <button type="submit" id="ansSubmit">post</button>
-      
+      <div><button type="button" class="btn btn-success customAlign" id="ansSubmit">Answer</button>
+      </div>
     </form>
   </div>
 </div>
-    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+</body>
 
-        <script src="<?php echo base_url(); ?>js/index.js"></script>
-
-    
-    
-    
-  </body>
-</html>
 

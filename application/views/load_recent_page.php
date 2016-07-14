@@ -23,7 +23,7 @@
             </li>
             
           </ul>
-          <div class="tab-content">
+          <div class="tab-content" style="padding-bottom:5%">
             <div class="tab-pane active" id="tab_default_1">
               <div class="wrapper">
                 <div class="features">
@@ -56,7 +56,7 @@
                               $tagId = $tagIDs[$i];
                               $i++;
                              ?>
-                              <li><a href="<?php echo base_url().'index.php/Answerme/tagInfo/'.$tagId;?>"><?php echo $tag ?></a></li>
+                              <li><a href="<?php echo base_url().'index.php/Tags/tagInfo/'.$tagId;?>"><?php echo $tag ?></a></li>
                             <?php } ?>
                           </ul> 
                             <div class="media-left media-top">
@@ -93,43 +93,44 @@
                                 <?php $uniqueAnswer = explode("-|::|-", $answer[$key]['answers']);echo $uniqueAnswer[count($uniqueAnswer)-1]; ?> 
                               </h4>
                             </div>
-                          </div>
-                                       
+                          </div>               
                         </div>
-                      </div>
-
-
-
-                        
+                      </div>    
                       <?php $i++; }?>  
-
-                 
                     </div>
-                                         <?php }?>
+                   <?php }?>
                 </div>
               </div>
             </div>
-                <?php                                           
-                                echo '<div>';
+                <?php                
+                        echo "<br><br>";
+                     if($tab==1)
+                     $tbc=1;
+                     else
+                     $tbc=2;                           
+                                echo '<div style="margin-top : 40%">';
                                 echo '<center>';
                                   for($results=1;$results<($row1['pages']+1);$results++)
-                                  {
-                                    echo '<B><p style="display : inline; font color : white;"><a href="http://www.answerme.com/index.php/answerme/homepage/'.$results.'">'.$results.' &nbsp &nbsp </a></B>';
-                                  }
+                                   {
+                                   echo '<p style="display : inline; font color : white;"><a href="http://www.answerme.com/index.php/answerme/homepage/'.$results.'/'.$tbc.'">';
+                                      if($results == $page_number)
+                                      {
+                                          echo'<U><MARK style = "background-color : #b3b3ff">';
+                                      }
+                                          echo $results;
+                                            if($results == $page_number)
+                                              echo '</U></MARK>';
+
+                                          echo' &nbsp &nbsp </a>';
+                                    }
                                  echo '</center>';
-                                  echo'</div>';
+                                 echo'</div>';
+                                 echo "<br><br>";
 
-                            ?>
-
-            
-
+                ?>
           </div>
         </div>
       </div>
     </div>               
   </div>
-</div>
-<?php
-  $this->load->view('footer.php');
 
-?>

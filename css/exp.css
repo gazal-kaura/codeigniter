@@ -33,6 +33,15 @@ $bp-large: 70em;
   max-width: $bp-large;
   margin: 0 auto;
 }
+#block {
+   display: block;
+                                      height: 1px;
+                                      border: 0;
+                                      border-top: 7px solid #FFF;
+                                      margin-top: 5px;;
+                                      width:100%;
+                                      padding: 0; 
+}
 
 nav {
   background: $neutral;

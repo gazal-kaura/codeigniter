@@ -1,29 +1,5 @@
-<!DOCTYPE html>
-<html >
-  <head>
-    <meta charset="UTF-8">
-    <title>QuestionDetailPage</title>              
-        <!--link rel="stylesheet" href="css/style.css"-->
-        <link rel="stylesheet" href="<?php echo base_url(); ?>css/homepage.css">
-        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-        <link rel="stylesheet" href="<?php echo base_url(); ?>css/exp.css">
-      
-    
-  </head>
-
-  <body>
-      <?php include('template.php'); ?>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="http://www.answerme.com/index.php/answerme/homepage">Home</a></li>
-                        <li><a href="http://www.answerme.com/index.php/answerme/showAllTags">Tags</a></li>
-                        <li><a href="http://www.answerme.com/index.php/answerme/profile">MyProfile</a></li>
-                        <li><a href="http://www.answerme.com/index.php/question">Post a Question!</a></li>
-                        <li><a href="http://www.answerme.com/index.php/answerme/contact">Contact</a></li>
-                        <li><a href="http://www.answerme.com/index.php/answerme/logout">Logout</a></li>
-                    </ul>
-                </div>
-              </nav>
-
+                  <br><br><br>
+<body>
                   <?php 
                   if(sizeof($data1)){
                   foreach($data1 as $data){
@@ -40,7 +16,7 @@
                   $tagIDs=explode("-|::|-", $val['tag_ids']); ?>
 
 
-                      <div class="panel panel-default col-md-7">
+                      <div class="panel panel-default col-md-12">
                       <div class="panel-body">
                         <div class="row">
                           <div class="media">
@@ -61,7 +37,7 @@
                               $tagId = $tagIDs[$i];
                               $i++;
                              ?> 
-                              <li><a href="<?php echo base_url().'index.php/Answerme/tagInfo/'.$tagId;?>"><?php echo $tag; ?></a></li>
+                              <li><a href="<?php echo base_url().'index.php/Tags/tagInfo/'.$tagId;?>"><?php echo $tag; ?></a></li>
                             <?php } ?>
                           </ul>
                        <h4> <a href=<?php echo "http://www.answerme.com/index.php/question/answer/",$val['question_id']; ?> >Answer</a><h4>    
@@ -103,8 +79,10 @@
 
                   else {?> <center><h3>No results found<h3></center>
                   <?php }?>
-
- <?php include('footer.php'); ?>
+<div>
+<br><br><br>
+</body>
+ 
 
    
 

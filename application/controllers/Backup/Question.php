@@ -5,15 +5,31 @@ class Question extends CI_Controller {
 
 	public function __construct(){
 		parent::__construct();
+		$this->load->helper(array('form','url'));
+		$this->load->database();
 		$this->load->model('User_model');
-		$this->load->model('Quesans_model');
-		
+		$this->load->library('session');
+		$this->load->library('form_validation');
 	}
-
+	/**
+	 * Index Page for this controller.
+	 *
+	 * Maps to the following URL
+	 * 		http://example.com/index.php/welcome
+	 *	- or -
+	 * 		http://example.com/index.php/welcome/index
+	 *	- or -
+	 * Since this controller is set as the default controller in
+	 * config/routes.php, it's displayed at http://example.com/
+	 *
+	 * So any other public methods not prefixed with an underscore will
+	 * map to /index.php/welcome/<method_name>
+	 * @see http://codeigniter.com/user_guide/general/urls.html
+	 */
 	public function index()
 	{
-		$data=array('title'=>"Post a Question");
-		$this->load->view('postQMain',$data);
+
+		$this->load->view('postQ');
 		
 	}
 
@@ -37,7 +53,7 @@ class Question extends CI_Controller {
 					'question_description'  => $this->input->post('ques'),
 			        'user_id' 				=> $user_id 		        	  
 					);	
-			$newQuestionID = $this->Quesans_model->postQues($data,$tagList);							       
+			$newQuestionID = $this->User_model->postQues($data,$tagList);							       
 			if($newQuestionID){		
 				echo $newQuestionID;
 			}
@@ -48,28 +64,19 @@ class Question extends CI_Controller {
 	}
 
 	//question detail page
-	public function qdp($question_id,$start_of_page=1,$records_per_page=3){
+	public function qdp($question_id,$start_of_page=1,$records_per_page=5){
 		$data = array(
-				'title'=>"Question Detail Page",
-		        'row1' => $this->Quesans_model->getQuesDetail($question_id,$start_of_page,$records_per_page)
+		        'row1' => $this->User_model->getQuesDetail($question_id,$start_of_page,$records_per_page)
 		        );
-		$data['page_number'] = $start_of_page;
-		$data['qid'] = $question_id;
-		$this->load->view('qdpMain',$data);
+		$this->load->view('qdp',$data);
 	}
 
-
-	//select question for answering and load answer post page
 	public function answer($question_id){
 		if(!isset($this->session->userdata['sessiondata']['user_id']))
 			$this->load->view('index');
 		else{
-		$question_description=$this->Quesans_model->getQuesDescription($question_id);		
-		$data = array('question_id' => $question_id,
-					   'question_description' =>$question_description,
-					   'title'=>"Post An Answer"
-					  );
-		$this->load->view('answerQuestionMain',$data);
+		$data = array('question_id' => $question_id);
+		$this->load->view('answerQuestion',$data);
 		}
 	}
 
@@ -86,17 +93,15 @@ class Question extends CI_Controller {
 			        'user_id' 	   => $user_id ,
 			        'answer '	   => $answer      	  
 					);		
-			if($this->Quesans_model->postA($data)){	
+			if($this->User_model->postA($data)){	
 			    $data = array(
-			    	'title'=>"Question Detail Page",
-			        'row1' => $this->Quesans_model->getQuesDetail($question_id)
+			        'row1' => $this->User_model->getQuesDetail($question_id)
 			        );	
-			     $this->load->view('qdpMain',$data);
+			     $this->load->view('qdp',$data);
 				
 			}
 			else{
-				 $data = array('title' => "Error");
-				 $this->load->view('errorMain',$data);
+				 $this->load->view('error');
 			}
 		}
 	}
